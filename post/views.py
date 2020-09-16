@@ -6,9 +6,12 @@ from .models import Post
 
 
 class PostList(ListView):
-
     model = Post
-
+    context_object_name ='all_posts'
+   # queryset = Post.objects.filter(active=True)
+   # template_name = 'post/test.html'
+    def get_queryset(self):
+        return Post.objects.filter(active=True)
 class PostDetail(DetailView):
 
     model = Post
